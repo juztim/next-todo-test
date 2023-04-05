@@ -30,7 +30,7 @@ const Home: NextPage = () => {
     onSuccess: () => {
       toast.success("Successfully added new todo");
       form.reset();
-      ctx.todo.invalidate();
+      void ctx.todo.invalidate();
     },
   });
 
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
     },
     onSuccess: () => {
       toast.success("Successfully updated todo");
-      ctx.todo.invalidate();
+      void ctx.todo.invalidate();
     },
   });
 
