@@ -59,7 +59,7 @@ const Home: NextPage = () => {
     },
     onSuccess: () => {
       toast.success("Successfully deleted todo");
-      ctx.todo.invalidate();
+      void ctx.todo.invalidate();
     },
   });
 
@@ -102,6 +102,7 @@ const Home: NextPage = () => {
             {!!isTodosLoading && <div>Loading...</div>}
             {data?.map((todo) => (
               <Card
+                key={todo.id}
                 shadow="sm"
                 padding="sm"
                 radius="md"
@@ -112,10 +113,7 @@ const Home: NextPage = () => {
                 <Card.Section>
                   <Flex justify="space-between" align="center">
                     <span>{todo.title}</span>
-                    <div
-                      className="flex items-center justify-between gap-4"
-                      onClick={() => {}}
-                    >
+                    <div className="flex items-center justify-between gap-4">
                       <Checkbox
                         checked={todo.completed}
                         onChange={() => {
